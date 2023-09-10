@@ -1,0 +1,54 @@
+	LD	R6, #1E		
+	LD	R7, #0F		
+	LD	R8, #1F		
+	LD	R9, #0F		
+	LD	Ra, #1E		
+	LD	Rb, #10		
+	LD	Rc, #1F		
+	LD	Rd, #10		
+	LD	I, Lab_0		
+	CALL	Lab_1		
+Lab_6	LD	R0, #02		
+	SKNP	R0		
+	CALL	Lab_2		
+	LD	R0, #08		
+	SKNP	R0		
+	CALL	Lab_3		
+	LD	R0, #04		
+	SKNP	R0		
+	CALL	Lab_4		
+	LD	R0, #06		
+	SKNP	R0		
+	CALL	Lab_5		
+	JP	Lab_6		
+Lab_1	DRW	R6, R7, #1		
+	DRW	R8, R9, #1		
+	DRW	Ra, Rb, #1		
+	DRW	Rc, Rd, #1		
+	RET			
+Lab_3	ADD	R7, #FF		
+	ADD	R9, #FF		
+	ADD	Rb, #01		
+	ADD	Rd, #01		
+	CALL	Lab_1		
+	RET			
+Lab_2	ADD	R7, #01		
+	ADD	R9, #01		
+	ADD	Rb, #FF		
+	ADD	Rd, #FF		
+	CALL	Lab_1		
+	RET			
+Lab_4	ADD	R6, #FF		
+	ADD	R8, #01		
+	ADD	Ra, #FF		
+	ADD	Rc, #01		
+	CALL	Lab_1		
+	RET			
+Lab_5	ADD	R6, #01		
+	ADD	R8, #FF		
+	ADD	Ra, #01		
+	ADD	Rc, #FF		
+	CALL	Lab_1		
+	RET			
+Lab_0	DB	%10000000		;#80 ' ' =>   *       
+	DB	%00000000		;#00 ' ' =>           

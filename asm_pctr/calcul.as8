@@ -1,0 +1,331 @@
+; @author pctronique (progratronic) [NAULOT Ludovic]
+	JP	MAIN		; Debut du code
+
+				; --- La division ---
+DIV_ASM	LD	R3, 0		; On place 0 dans le registre 3
+	LD	R4, 0		; On place 0 dans le registre 4
+B_DIV	SNE	R2, 0		; Si le registre 2 != 0
+	RET			; On retourne au code (si la condition est fausse).
+	LD	R4, R1		; On place la valeur du registre 1 vars le registre 4
+	SUB	R1, R2		; R1=R1-R2
+	LD	R5, #80		; On place #80 dans le registre 5
+	AND	R5, R1		; R5=R5&R1
+	SNE	R5, #80		; Si le registre 5 != 0
+	RET			; On retourne au code (si la condition est fausse).
+	ADD	R3, 1		; R3=R3+1
+	JP	B_DIV		; On continue la division
+		
+				; --- On recupere le reste de la division ---
+DIV_RES	CALL	DIV_ASM		; On fait la division
+	LD	R3, R4		; on place la valeur du reste du registre 3 vers le registre 4
+	RET			; On retourne au code.
+	
+				; --- L'addition ---
+ADD_ASM	LD	R3, R1		; On place la valeur du registre 1 vers le registre 3
+	ADD	R3, R2		; R3=R3+R2
+	RET			; On retourne au code.
+	
+				; --- La soustraction ---
+SUB_ASM	LD	R3, R1		; On place la valeur du registre 1 vers le registre 3
+	SUB	R3, R2		; R3=R3-R2
+	RET			; On retourne au code.
+	
+				; --- La multiplication ---
+MUL_ASM	LD	R3, 0		; On place 0 dans le registre 3
+	LD	R4, 0		; On place 0 dans le registre 4
+B_MULT	SNE	R2, R4		; Si le registre 2 != registre 4
+	RET			; On retourne au code (si la condition est fausse).
+	ADD	R3, R1		; R3=R3+R1
+	ADD	R4, 1		; R4=R4+1
+	JP	B_MULT		; On continue la multiplication.
+	
+				; --- Dessiner le la valeur en base 10 (a partir de sa valeur hexadecimal). ---
+BCD_ASM	LD	R0, I		; Recupere la valeur hexadecimal dans le registre 0
+	LD	R9, R0		; Place cette valeur dans le registre 9
+	LD	I, CHIFFRES	; emplacement des trois chiffres
+	BCD	R9		; convertie l'hexadecimal en 3 chiffres
+	LD	R3, I		; Place les valeur dans les registres 0, 1 et 2
+	
+				; --- afficher le premier chiffre ---
+	LD	F, R0		; la valeur a afficher
+	DRW	RE, RD, 5		; Dessiner sur l'ecran le chiffre
+
+				; --- afficher le deuxieme chiffre ---
+	ADD	RE, 5		; Position en x => RE=RE+5
+	LD	F, R1		; La valeur a afficher
+	DRW	RE, RD, 5		; Dessiner sur l'ecran le chiffre
+
+				; --- afficher le troisieme chiffre ---
+	ADD	RE, 5		; Position en x => RE=RE+5
+	LD	F, R2		; la valeur a afficher
+	DRW	RE, RD, 5		; Dessiner sur l'ecran le chiffre
+	RET			; On retourne au code.
+	
+				; --- Si on veut afficher la multiplication ---
+DISP_MU	LD	RC, 6		; On place 6 dans le registre C
+	JP	DISP_CA		; Afficher le resultat
+	
+				; --- Si on veut afficher l'addition ---
+DISP_PL	LD	RC, 12		; On place 12 dans le registre C
+	JP	DISP_CA		; Afficher le resultat
+	
+				; --- Si on veut afficher la soustraction ---
+DISP_MO	LD	RC, 18		; On place 18 dans le registre C
+	JP	DISP_CA		; Afficher le resultat
+	
+				; --- Si on veut afficher le reste de la division ---
+DISP_RE	LD	RC, 24		; On place 24 dans le registre C
+	JP	DISP_CA		; Afficher le resultat
+	
+				; --- Pour afficher le resultat de la division ---
+DISP_DI	LD	RC, 0		; On place 0 dans le registre C
+
+				; --- Dessine l'equation ---
+DISP_CA	LD	I, CALC_A_DP	; Recupere la valeur A (en hexadecimal)
+	CALL	BCD_ASM		; Dessine la valeur A (en base 10)
+	ADD	RE, 5		; RE=RE+5
+	
+	LD	I, DIV_IMG		; Recupere l'image "/"
+	ADD	I, RC		; Recupere l'image "%" ou "*" ou "/" ou "+" ou "-"
+	DRW	RE, RD, 5		; Dessine "%" ou "*" ou "/" ou "+" ou "-"
+	ADD	RE, 5		; RE=RE+5
+	
+	LD	I, CALC_B_DP	; Recupere la valeur B (en hexadecimal)
+	CALL	BCD_ASM		; Dessine la valeur B (en base 10)
+	ADD	RE, 5		; RE=RE+5
+	
+	LD	I, EQU_IMG		; Recupere l'image "="
+	DRW	RE, RD, 5		; Dessine "="
+	ADD	RE, 5		; RE=RE+5
+	
+	LD	I, CALC_R_DP	; Recupere le resultat (ou le reste) (en hexadecimal)
+	CALL	BCD_ASM		; Dessine le resultat (ou le reste) (en base 10)
+	RET			; Revenir au code
+	
+				; --- Image "/" ---
+DIV_IMG	DB	%00000000		;           
+	DB	%00010000		;      *    
+	DB	%00100000		;     *     
+	DB	%01000000		;    *      
+	DB	%10000000		;   *       
+	DB	%00000000		;           
+
+				; --- Image "*" ---
+MUL_IMG	DB	%00000000		;           
+	DB	%10010000		;   *  *    
+	DB	%01100000		;    **     
+	DB	%01100000		;    **     
+	DB	%10010000		;   *  *    
+	DB	%00000000		;           
+
+				; --- Image "+" ---
+PLU_IMG	DB	%00000000		;           
+	DB	%01100000		;    **     
+	DB	%11110000		;   ****    
+	DB	%11110000		;   ****    
+	DB	%01100000		;    **     
+	DB	%00000000		;           
+	
+				; --- Image "-" ---
+MOU_IMG	DB	%00000000		;           
+	DB	%00000000		;           
+	DB	%11110000		;   ****    
+	DB	%00000000		;           
+	DB	%00000000		;           
+	DB	%00000000		;           
+	
+				; --- Image "%" ---
+POU_IMG	DB	%00000000		;           
+	DB	%10010000		;   *  *    
+	DB	%00100000		;     *     
+	DB	%01000000		;    *      
+	DB	%10010000		;   *  *    
+	DB	%00000000		;           
+
+				; --- Image "=" ---
+EQU_IMG	DB	%00000000		;           
+	DB	%11110000		;   ****    
+	DB	%00000000		;           
+	DB	%11110000		;   ****    
+	DB	%00000000		;           
+	DB	%00000000		;           
+
+				; --- Afficher la valeur hexadecimal ---
+CHIFFRES	DB	#00		; Le chiffre des centaines
+	DB	#00		; Le chiffre des dizaines
+	DB	#00		; Le chiffre des unites
+	
+				; --- Le calcul ---
+CALC_A_DP	DB	#00		; Valeur de A
+CALC_B_DP	DB	#00		; Valeur de B
+CALC_R_DP	DB	#00		; Le resultat
+
+				; --- Le premier calcul (/) ---
+MAIN	LD	I, DIV_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R1, R0		; On place la valeur du registre 0 vers le registre 1
+	LD	I, DIV_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R2, R0		; On place la valeur du registre 0 vers le registre 2
+	CALL	DIV_ASM		; On fait la division
+	LD	R0, R3		; On place la valeur du resultat du registre 3 vers le registre 0
+	LD	I, DIV_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	I, R0		; On place la valeur dans la ram
+        
+				; --- Afficher le calcul ---
+DISP_1	LD	RE, 1		; On place 1 dans le registre E (Position en X)
+	LD	RD, 1		; On place 1 dans le registre D (Position en Y)
+	LD	I, DIV_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_A_DP	; On recupere l'emplacement de calcul de la valeur A
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, DIV_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_B_DP	; On recupere l'emplacement de calcul de la valeur B
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, DIV_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_R_DP	; On recupere l'emplacement de calcul du resultat
+	LD	I, R0		; On enregistre la valeur de calcul
+	CALL	DISP_DI		; Afficher la division
+	
+				; --- Le deuxieme calcul (%) ---
+cal_0	LD	I, DIV_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R1, R0		; On place la valeur du registre 0 vers le registre 1
+	LD	I, DIV_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R2, R0		; On place la valeur du registre 0 vers le registre 2
+	CALL	DIV_RES		; On fait la division (on recupere le reste)
+	LD	R0, R3		; On place la valeur du resultat du registre 3 vers le registre 0
+	LD	I, RES_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	I, R0		; On place la valeur dans la ram
+        
+				; --- Afficher le calcul ---
+DISP_0	LD	RE, 1		; On place 1 dans le registre E (Position en X)
+	ADD	RD, 6		; RD=RD+6 (RD=1+6=7)(Position en Y)
+	LD	I, DIV_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_A_DP	; On recupere l'emplacement de calcul de la valeur A
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, DIV_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_B_DP	; On recupere l'emplacement de calcul de la valeur B
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, RES_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_R_DP	; On recupere l'emplacement de calcul du resultat
+	LD	I, R0		; On enregistre la valeur de calcul
+	CALL	DISP_RE		; Afficher le reste de la division
+	
+				; --- Le troisieme calcul (*) ---
+cal_2	LD	I, MULT_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R1, R0		; On place la valeur du registre 0 vers le registre 1
+	LD	I, MULT_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R2, R0		; On place la valeur du registre 0 vers le registre 2
+	CALL	MUL_ASM		; On fait la multiplication
+	LD	R0, R3		; On place la valeur du resultat du registre 3 vers le registre 0
+	LD	I, MULT_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	I, R0		; On place la valeur dans la ram
+	
+				; --- Afficher le calcul ---
+DISP_2	LD	RE, 1		; On place 1 dans le registre E (Position en X)
+	ADD	RD, 6		; RD=RD+6 (RD=7+6=13)(Position en Y)
+	LD	I, MULT_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_A_DP	; On recupere l'emplacement de calcul de la valeur A
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, MULT_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_B_DP	; On recupere l'emplacement de calcul de la valeur B
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, MULT_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_R_DP	; On recupere l'emplacement de calcul du resultat
+	LD	I, R0		; On enregistre la valeur de calcul
+	CALL	DISP_MU		; Afficher la multiplication
+	
+				; --- Le quatrieme calcul (+) ---
+cal_3	LD	I, ADD_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R1, R0		; On place la valeur du registre 0 vers le registre 1
+	LD	I, ADD_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R2, R0		; On place la valeur du registre 0 vers le registre 2
+	CALL	ADD_ASM		; On fait l'addition
+	LD	R0, R3		; On place la valeur du resultat du registre 3 vers le registre 0
+	LD	I, ADD_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	I, R0		; On place la valeur dans la ram
+	
+				; --- Afficher le calcul ---
+DISP_3	LD	RE, 1		; On place 1 dans le registre E (Position en X)
+	ADD	RD, 6		; RD=RD+6 (RD=13+6=19)(Position en Y)
+	LD	I, ADD_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_A_DP	; On recupere l'emplacement de calcul de la valeur A
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, ADD_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_B_DP	; On recupere l'emplacement de calcul de la valeur B
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, ADD_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_R_DP	; On recupere l'emplacement de calcul du resultat
+	LD	I, R0		; On enregistre la valeur de calcul
+	CALL	DISP_PL		; On affiche l'addition
+	
+				; --- Le cinquieme calcul (-) ---
+cal_4	LD	I, SUB_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R1, R0		; On place la valeur du registre 0 vers le registre 1
+	LD	I, SUB_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	R2, R0		; On place la valeur du registre 0 vers le registre 2
+	CALL	SUB_ASM		; On fait la soustraction
+	LD	R0, R3		; On place la valeur du resultat du registre 3 vers le registre 0
+	LD	I, SUB_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	I, R0		; On place la valeur dans la ram
+	
+				; --- Afficher le calcul ---
+DISP_4	LD	RE, 1		; On place 1 dans le registre E (Position en X)
+	ADD	RD, 6		; RD=RD+6 (RD=19+6=25)(Position en Y)
+	LD	I, SUB_A_00	; On recupere l'emplacement de la valeur A
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_A_DP	; On recupere l'emplacement de calcul de la valeur A
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, SUB_B_00	; On recupere l'emplacement de la valeur B
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_B_DP	; On recupere l'emplacement de calcul de la valeur B
+	LD	I, R0		; On enregistre la valeur de calcul
+	LD	I, SUB_R_00	; On recupere l'emplacement de la valeur du resultat
+	LD	R0, I		; On place la valeur dans le registre 0
+	LD	I, CALC_R_DP	; On recupere l'emplacement de calcul du resultat
+	LD	I, R0		; On enregistre la valeur de calcul
+	CALL	DISP_MO		; On affiche la soustraction
+	
+FIN	JP	FIN		; La fin du code
+
+; --- Le premier calcul (division) ---
+DIV_A_00	DB	255
+DIV_B_00	DB	128
+DIV_R_00	DB	0
+
+; --- Le deuxieme calcul (le reste de la division) ---
+RES_R_00	DB	0
+
+; --- Le troisieme calcul (multiplication) ---
+MULT_A_00	DB	47
+MULT_B_00	DB	5
+MULT_R_00	DB	0
+
+; --- Le quatrieme calcul (addition) ---
+ADD_A_00	DB	47
+ADD_B_00	DB	5
+ADD_R_00	DB	0
+
+; --- Le cinquieme calcul (soustraction) ---
+SUB_A_00	DB	47
+SUB_B_00	DB	5
+SUB_R_00	DB	0

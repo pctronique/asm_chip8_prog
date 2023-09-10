@@ -1,0 +1,146 @@
+	LD	Re, #05		
+	LD	R5, #00		
+	LD	Rb, #06		
+Lab_2	LD	Ra, #00		
+Lab_1	LD	I, Lab_0		
+	DRW	Ra, Rb, #1		
+	ADD	Ra, #04		
+	SE	Ra, #40		
+	JP	Lab_1		
+	ADD	Rb, #02		
+	SE	Rb, #12		
+	JP	Lab_2		
+	LD	Rc, #20		
+	LD	Rd, #1F		
+	LD	I, Lab_3		
+	DRW	Rc, Rd, #1		
+	CALL	Lab_4		
+	LD	R0, #00		
+	LD	R1, #00		
+	LD	I, Lab_6		
+	DRW	R0, R1, #1		
+	ADD	R0, #08		
+	LD	I, Lab_7		
+	DRW	R0, R1, #1		
+Lab_17	LD	R0, #40		
+	LD	DT, R0		
+Lab_8	LD	R0, DT		
+	SE	R0, #00		
+	JP	Lab_8		
+	RND	R6, #0F		
+	LD	R7, #1E		
+	LD	R8, #01		
+	LD	R9, #FF		
+	LD	I, Lab_7		
+	DRW	R6, R7, #1		
+Lab_12	LD	I, Lab_3		
+	DRW	Rc, Rd, #1		
+	LD	R0, #04		
+	SKNP	R0		
+	ADD	Rc, #FE		
+	LD	R0, #06		
+	SKNP	R0		
+	ADD	Rc, #02		
+	LD	R0, #3F		
+	AND	Rc, R0		
+	DRW	Rc, Rd, #1		
+	LD	I, Lab_7		
+	DRW	R6, R7, #1		
+	ADD	R6, R8		
+	ADD	R7, R9		
+	LD	R0, #3F		
+	AND	R6, R0		
+	LD	R1, #1F		
+	AND	R7, R1		
+	SNE	R7, #1F		
+	JP	Lab_9		
+Lab_18	SNE	R6, #00		
+	LD	R8, #01		
+	SNE	R6, #3F		
+	LD	R8, #FF		
+	SNE	R7, #00		
+	LD	R9, #01		
+	DRW	R6, R7, #1		
+	SE	Rf, #01		
+	JP	Lab_10		
+	SNE	R7, #1F		
+	JP	Lab_10		
+	LD	R0, #05		
+	SUB	R0, R7		
+	SE	Rf, #00		
+	JP	Lab_10		
+	LD	R0, #01		
+	LD	ST, R0		
+	LD	R0, R6		
+	LD	R1, #FC		
+	AND	R0, R1		
+	LD	I, Lab_0		
+	DRW	R0, R7, #1		
+	LD	R0, #FE		
+	XOR	R9, R0		
+	CALL	Lab_4		
+	ADD	R5, #01		
+	CALL	Lab_4		
+	SNE	R5, #60		
+	JP	Lab_11		
+Lab_10	JP	Lab_12		
+Lab_9	LD	R9, #FF		
+	LD	R0, R6		
+	SUB	R0, Rc		
+	SE	Rf, #01		
+	JP	Lab_13		
+	LD	R1, #02		
+	SUB	R0, R1		
+	SE	Rf, #01		
+	JP	Lab_14		
+	SUB	R0, R1		
+	SE	Rf, #01		
+	JP	Lab_15		
+	SUB	R0, R1		
+	SE	Rf, #01		
+	JP	Lab_16		
+Lab_13	LD	R0, #20		
+	LD	ST, R0		
+	LD	I, Lab_7		
+	ADD	Re, #FF		
+	LD	R0, Re		
+	ADD	R0, R0		
+	LD	R1, #00		
+	DRW	R0, R1, #1		
+	SE	Re, #00		
+	JP	Lab_17		
+Lab_11	JP	Lab_11		
+Lab_14	ADD	R8, #FF		
+	SNE	R8, #FE		
+	LD	R8, #FF		
+	JP	Lab_15		
+Lab_16	ADD	R8, #01		
+	SNE	R8, #02		
+	LD	R8, #01		
+Lab_15	LD	R0, #04		
+	LD	ST, R0		
+	LD	R9, #FF		
+	JP	Lab_18		
+Lab_4	LD	I, Lab_5		
+	BCD	R5		
+	LD	R2, I		
+	LD	F, R1		
+	LD	R3, #37		
+	LD	R4, #00		
+	DRW	R3, R4, #5		
+	ADD	R3, #05		
+	LD	F, R2		
+	DRW	R3, R4, #5		
+	RET			
+Lab_0	DB	%11110000		;#F0 ' ' =>   ****    
+	DB	%00000000		;#00 ' ' =>           
+Lab_7	DB	%10000000		;#80 ' ' =>   *       
+	DB	%00000000		;#00 ' ' =>           
+Lab_3	DB	%11111100		;#FC ' ' =>   ******  
+	DB	%00000000		;#00 ' ' =>           
+Lab_6	DB	%10101010		;#AA ' ' =>   * * * * 
+	DB	%00000000		;#00 ' ' =>           
+Lab_5	DB	%00000000		;#00 ' ' =>           
+	DB	%00000000		;#00 ' ' =>           
+	DB	%00000000		;#00 ' ' =>           
+	DB	%00000000		;#00 ' ' =>           

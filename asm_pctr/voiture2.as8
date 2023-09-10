@@ -1,0 +1,96 @@
+; @author pctronique (progratronic) [NAULOT Ludovic]
+	CLS		; effacer l'ecran
+
+			; --- construire les murs ---
+	LD	R1, 17	; position en x de 17 pixels
+	LD	R3, 60	; position en x de 60 pixels
+	LD	R2, 2	; position en y de 2 pixels
+	LD	I, MUR	; recupere l'image du mur
+	DRW	R2, R1, 3	; dessine le premier mur d'une hauteur de 3 pixels.
+	DRW	R3, R1, 3	; dessine le deuxieme mur d'une hauteur de 3 pixels.
+
+			; --- positionnement de la route ---
+	LD	R1, 20	; position en x de 20 pixels
+	LD	R2, 0	; position en y de 0 pixel
+	LD	I, ROUTE	; recupere l'image de la route
+
+			; --- construire la route ---
+CONST	DRW	R2, R1, 1	; dessine la route d'une hauteur de 1 pixel.
+	ADD	R2, 8	; Ajoute 8 pixels sur x
+	SE	R2, 64	; Verifier si on est a 64 pixels en x
+	JP	CONST	; continue a construire la route, si on est inferieur a 64 pixels
+	CALL	START_V	; commence le jeu
+
+			; --- faire avancer la voiture si on appuie sur la touche 6 ---
+AP_T_A	LD	RB, 6	; 6 est la touche pour avancer
+	SKP	RB	; verifier que la touche est appuye
+	JP	AP_T_R	; s'il n'est pas appuyer, on verifie qu'on n'est pas en deplacement de recule.
+
+AVANCE	CALL	DESS_V	; Effacer la voiture.
+	ADD	RD, R9	; Faire avancer la voiture.
+	CALL	DESS_V	; Dessiner la voiture.
+	SNE	RF, 1	; Verifier qu'on n'est pas a la limite de l'ecran.
+	JP	RECULE	; Faire reculer la voiture.
+	JP	AP_T_A	; Retourne verifier les touches de deplacement.
+
+			; --- faire reculer la voiture si on appuie sur la touche 4 ---
+AP_T_R	LD	RB, 4	; 4 est la touche du recule
+	SKP	RB	; verifier que la touche est appuye
+	JP	AP_T_A	; s'il n'est pas appuyer, on verifie qu'on n'est pas en deplacement d'avancer.
+
+RECULE	CALL	DESS_V	; Effacer la voiture.
+	SUB	RD, R9	; Faire reculer la voiture.
+	CALL	DESS_V	; Dessiner la voiture.
+	SNE	RA, 1	; Verifier qu'on n'est pas a la limite de l'ecran.
+	JP	AVANCE	; Faire avancer la voiture.
+	JP	AP_T_A	; Retourne verifier les touches de deplacement.
+
+FIN	JP	FIN	; --- la fin du programme ---
+	
+			; --- placer la voiture ---
+START_V	LD	RD, 7	; position en y de 7 pixels
+	LD	RE, 11	; position en x de 11 pixels
+	LD	R9, 1	; vitesse de deplacement
+
+			; --- dessiner la voiture ---
+DESS_V	LD	I, V_P1	; recupere la premiere partie de l'image
+	DRW	RD, RE, 9	; dessiner sur l'ecran, d'une hauteur de 9 pixels
+	LD	RA, RF	; recupere la valeur de collision
+	LD	RC, RD	; recupere l'emplacement de la premiere partie
+	ADD	RC, 8	; ajoute 8 pixels, pour dessiner la deuxieme partie
+	LD	I, V_P2	; recupere la deuxieme partie de l'image
+	DRW	RC, RE, 9	; dessiner sur l'ecran, d'une hauteur de 9 pixels
+	RET		; retour sur le deplacement
+
+FIN_DESS	JP	FIN_DESS	; la fin du dessin
+
+			; --- Donnees ---
+			; --- Premiere partie de la voiture ---
+V_P1	DB	%00000111	;        ***
+	DB	%00001000	;       *   
+	DB	%00001000	;       *   
+	DB	%01110000	;    ***    
+	DB	%10000000	;   *       
+	DB	%10011000	;   *  **   
+	DB	%11111111	;   ********
+	DB	%00111100	;     ****  
+	DB	%00011000	;      **   
+
+			; --- Deuxieme partie de la voiture ---
+V_P2	DB	%10000000	;   *       
+	DB	%01000000	;    *      
+	DB	%00100000	;     *     
+	DB	%00011100	;      ***  
+	DB	%00000010	;         * 
+	DB	%00011001	;      **  *
+	DB	%11111111	;   ********
+	DB	%00111100	;     ****  
+	DB	%00011000	;      **   
+
+			; --- La route ---
+ROUTE	DB	%11111111	;   ********
+
+			; --- Le mur ---
+MUR	DB	%10000000	;   *       
+	DB	%10000000	;   *       
+	DB	%10000000	;   *       

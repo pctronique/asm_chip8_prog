@@ -1,0 +1,129 @@
+	LD	Ra, #02		
+	LD	Rb, #0C		
+	LD	Rc, #3F		
+	LD	Rd, #0C		
+	LD	I, Lab_0		
+	DRW	Ra, Rb, #6		
+	DRW	Rc, Rd, #6		
+	LD	Re, #00		
+	CALL	Lab_1		
+	LD	R6, #03		
+	LD	R8, #02		
+Lab_13	LD	R0, #60		
+	LD	DT, R0		
+Lab_3	LD	R0, DT		
+	SE	R0, #00		
+	JP	Lab_3		
+	RND	R7, #17		
+	ADD	R7, #08		
+	LD	R9, #FF		
+	LD	I, Lab_4		
+	DRW	R6, R7, #1		
+Lab_7	LD	I, Lab_0		
+	DRW	Ra, Rb, #6		
+	DRW	Rc, Rd, #6		
+	LD	R0, #01		
+	SKNP	R0		
+	ADD	Rb, #FE		
+	LD	R0, #04		
+	SKNP	R0		
+	ADD	Rb, #02		
+	LD	R0, #1F		
+	AND	Rb, R0		
+	DRW	Ra, Rb, #6		
+	LD	Rd, R7		
+	RND	R0, #0A		
+	ADD	Rd, #FE		
+	SNE	R0, #00		
+	ADD	Rd, #02		
+	LD	R0, #00		
+	LD	R0, #1F		
+	AND	Rd, R0		
+	DRW	Rc, Rd, #6		
+	LD	I, Lab_4		
+	DRW	R6, R7, #1		
+	ADD	R6, R8		
+	ADD	R7, R9		
+	LD	R0, #3F		
+	AND	R6, R0		
+	LD	R1, #1F		
+	AND	R7, R1		
+	SNE	R6, #02		
+	JP	Lab_5		
+	SNE	R6, #3F		
+	JP	Lab_6		
+Lab_14	SNE	R7, #1F		
+	LD	R9, #FF		
+	SNE	R7, #00		
+	LD	R9, #01		
+	DRW	R6, R7, #1		
+	JP	Lab_7		
+Lab_5	LD	R8, #02		
+	LD	R3, #01		
+	LD	R0, R7		
+	SUB	R0, Rb		
+	JP	Lab_8		
+Lab_6	LD	R8, #FE		
+	LD	R3, #0A		
+	LD	R0, R7		
+	SUB	R0, Rd		
+Lab_8	SE	Rf, #01		
+	JP	Lab_9		
+	LD	R1, #02		
+	SUB	R0, R1		
+	SE	Rf, #01		
+	JP	Lab_10		
+	SUB	R0, R1		
+	SE	Rf, #01		
+	JP	Lab_11		
+	SUB	R0, R1		
+	SE	Rf, #01		
+	JP	Lab_12		
+Lab_9	LD	R0, #20		
+	LD	ST, R0		
+	CALL	Lab_1		
+	ADD	Re, R3		
+	CALL	Lab_1		
+	LD	R6, #3E		
+	SE	R3, #01		
+	LD	R6, #03		
+	LD	R8, #FE		
+	SE	R3, #01		
+	LD	R8, #02		
+	JP	Lab_13		
+Lab_10	ADD	R9, #FF		
+	SNE	R9, #FE		
+	LD	R9, #FF		
+	JP	Lab_11		
+Lab_12	ADD	R9, #01		
+	SNE	R9, #02		
+	LD	R9, #01		
+Lab_11	LD	R0, #04		
+	LD	ST, R0		
+	ADD	R6, #01		
+	SNE	R6, #40		
+	ADD	R6, #FE		
+	JP	Lab_14		
+Lab_1	LD	I, Lab_2		
+	BCD	Re		
+	LD	R2, I		
+	LD	F, R1		
+	LD	R4, #14		
+	LD	R5, #00		
+	DRW	R4, R5, #5		
+	ADD	R4, #15		
+	LD	F, R2		
+	DRW	R4, R5, #5		
+	RET			
+Lab_0	DB	%10000000		;#80 ' ' =>   *       
+	DB	%10000000		;#80 ' ' =>   *       
+	DB	%10000000		;#80 ' ' =>   *       
+	DB	%10000000		;#80 ' ' =>   *       
+	DB	%10000000		;#80 ' ' =>   *       
+	DB	%10000000		;#80 ' ' =>   *       
+Lab_4	DB	%10000000		;#80 ' ' =>   *       
+	DB	%00000000		;#00 ' ' =>           
+Lab_2	DB	%00000000		;#00 ' ' =>           
+	DB	%00000000		;#00 ' ' =>           
+	DB	%00000000		;#00 ' ' =>           
+	DB	%00000000		;#00 ' ' =>           

@@ -1,0 +1,31 @@
+; @author pctronique (progratronic) [NAULOT Ludovic]
+	CLS		; effacer l'ecran
+	
+			; --- creation de la balle ---
+	LD	I, Balle	; Recuperer l'image graphique de la balle
+	LD	R1, 32	; position en y de 32 pixels	
+	LD	R2, 31	; position en x de 15 pixels
+	LD	R3, 1	; la valeur de decalage de 1
+	DRW	R1, R2, 1	; dessiner sur l'ecran  la balle d'une hauteur de 1 pixels
+
+			; --- pour faire monter la balle ---
+Monter	DRW	R1, R2, 1	;  effacer  la balle de l'ecran
+	SUB	R2, R3	; monter la balle avec la valeur de decalag
+	DRW	R1, R2, 1	; dessiner sur l'ecran  la balle d'une hauteur de 1 pixel
+	SE	R2, 0	; on touche le mur du haut
+	JP	Monter	; on continue de monter
+
+			; --- pour faire  descendre la balle ---
+Descendre	DRW	R1, R2, 1	;  effacer  la balle de l'ecran
+	ADD	R2, R3	;  descendre la balle avec la valeur de decalage
+	DRW	R1, R2, 1	; dessiner sur l'ecran  la balle d'une hauteur de 1 pixel
+	SE	R2, 31	; on touche le mur du bas
+	JP	Descendre	; on continue de descendre
+
+			; --- on recomence ---
+	JP	Monter	; on fait monter la balle
+
+fin	JP	fin	; --- la fin du programme ---
+
+			; --- Donnees ---
+Balle	DB	%10000000	; l'image graphique de la balle

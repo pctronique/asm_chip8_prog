@@ -1,0 +1,173 @@
+; @author pctronique (progratronic) [NAULOT Ludovic]
+	BIOS_C8			; Creation du bios
+	JP	MAIN		; Debut du code
+	JP	MAIN		; Debut du code
+	
+				; --- Image "0" ---
+LAB_N	DB	%11110000		;   ****    
+	DB	%10010000		;   *  *    
+	DB	%10010000		;   *  *    
+	DB	%10010000		;   *  *    
+	DB	%11110000		;   ****    
+
+				; --- Image "1" ---
+	DB	%00100000		;     *     
+	DB	%01100000		;    **     
+	DB	%00100000		;     *     
+	DB	%00100000		;     *     
+	DB	%01110000		;    ***    
+
+				; --- Image "2" ---
+	DB	%11110000		;   ****    
+	DB	%00010000		;      *    
+	DB	%11110000		;   ****    
+	DB	%10000000		;   *       
+	DB	%11110000		;   ****    
+
+				; --- Image "3" ---
+	DB	%11110000		;   ****    
+	DB	%00010000		;      *    
+	DB	%11110000		;   ****    
+	DB	%00010000		;      *    
+	DB	%11110000		;   ****    
+
+				; --- Image "4" ---
+	DB	%10010000		;   *  *    
+	DB	%10010000		;   *  *    
+	DB	%11110000		;   ****    
+	DB	%00010000		;      *    
+	DB	%00010000		;      *    
+
+				; --- Image "5" ---
+	DB	%11110000		;   ****    
+	DB	%10000000		;   *       
+	DB	%11110000		;   ****    
+	DB	%00010000		;      *    
+	DB	%11110000		;   ****    
+
+				; --- Image "6" ---
+	DB	%11110000		;   ****    
+	DB	%10000000		;   *       
+	DB	%11110000		;   ****    
+	DB	%10010000		;   *  *    
+	DB	%11110000		;   ****    
+
+				; --- Image "7" ---
+	DB	%11110000		;   ****    
+	DB	%00010000		;      *    
+	DB	%00100000		;     *     
+	DB	%01000000		;    *      
+	DB	%01000000		;    *      
+
+				; --- Image "8" ---
+	DB	%11110000		;   ****    
+	DB	%10010000		;   *  *    
+	DB	%11110000		;   ****    
+	DB	%10010000		;   *  *    
+	DB	%11110000		;   ****    
+
+				; --- Image "9" ---
+	DB	%11110000		;   ****    
+	DB	%10010000		;   *  *    
+	DB	%11110000		;   ****    
+	DB	%00010000		;      *    
+	DB	%11110000		;   ****    
+
+				; --- Image "A" ---
+	DB	%11110000		;   ****    
+	DB	%10010000		;   *  *    
+	DB	%11110000		;   ****    
+	DB	%10010000		;   *  *    
+	DB	%10010000		;   *  *    
+
+				; --- Image "B" ---
+	DB	%11100000		;   ***     
+	DB	%10010000		;   *  *    
+	DB	%11100000		;   ***     
+	DB	%10010000		;   *  *    
+	DB	%11100000		;   ***     
+
+				; --- Image "C" ---
+	DB	%11110000		;   ****    
+	DB	%10000000		;   *       
+	DB	%10000000		;   *       
+	DB	%10000000		;   *       
+	DB	%11110000		;   ****    
+
+				; --- Image "D" ---
+	DB	%11100000		;   ***     
+	DB	%10010000		;   *  *    
+	DB	%10010000		;   *  *    
+	DB	%10010000		;   *  *    
+	DB	%11100000		;   ***     
+
+				; --- Image "E" ---
+	DB	%11110000		;   ****    
+	DB	%10000000		;   *       
+	DB	%11110000		;   ****    
+	DB	%10000000		;   *       
+	DB	%11110000		;   ****    
+
+				; --- Image "F" ---
+	DB	%11110000		;   ****    
+	DB	%10000000		;   *       
+	DB	%11110000		;   ****    
+	DB	%10000000		;   *       
+	DB	%10000000		;   *       
+
+				; --- Image "=" ---
+LET_EG	DB	%00000000		;
+	DB	%11110000		;   ****
+	DB	%00000000		;
+	DB	%11110000		;   ****
+	DB	%00000000		;
+
+				; --- Image "S" ---
+LET_S	DB	%01110000		;    ***
+	DB	%10000000		;   *
+	DB	%01100000		;    **
+	DB	%00010000		;      *
+	DB	%11100000		;   ***
+
+				; --- Image "T" ---
+LET_T	DB	%11110000		;   ****
+	DB	%01100000		;    **
+	DB	%01100000		;    **
+	DB	%01100000		;    **
+	DB	%01100000		;    **
+
+				; --- Image "R" ---
+LET_R	DB	%11100000		;   ***
+	DB	%10010000		;   *  *
+	DB	%11100000		;   ***
+	DB	%10010000		;   *  *
+	DB	%10010000		;   *  *
+
+MAIN	LD	R1, 14		; position x = 14
+	LD	R2, 12		; position y = 12
+	LD	R0, 0		; On place 0 dans le registre 0
+	LD	F, R0		; On recupere l'image "0"
+	DRW	R1, R2, 5		; On affiche le "0"
+	ADD	R1, 5		; position x = 14 + 5 = 19
+	LD	I, LET_EG		; On recupere l'image "="
+	DRW	R1, R2, 5		; On affiche le "="
+	ADD	R1, 5		; position x = 19 + 5 = 24
+	LD	I, LET_S		; On recupere l'image "S"
+	DRW	R1, R2, 5		; On affiche le "S"
+	ADD	R1, 5		; position x = 24 + 5 = 29
+	LD	I, LET_T		; On recupere l'image "T"
+	DRW	R1, R2, 5		; On affiche le "T"
+	ADD	R1, 5		; position x = 29 + 5 = 34
+	LD	R0, #A		; On place A dans le registre 0
+	LD	F, R0		; On recupere l'image "A"
+	DRW	R1, R2, 5		; On affiche le "A"
+	ADD	R1, 5		; position x = 34 + 5 = 39
+	LD	I, LET_R		; On recupere l'image "R"
+	DRW	R1, R2, 5		; On affiche le "R"
+	ADD	R1, 5		; position x = 39 + 5 = 44
+	LD	I, LET_T		; On recupere l'image "T"
+	DRW	R1, R2, 5		; On affiche le "T"
+	LD	R3, 0		; On place 0 dans le registre 3
+	LD	R3, K		; On attend qu'une personne appuis sur la touche "0"
+	CLS			; On efface l'ecran
+	JP	BIOSADDROM		; On commence le jeu
