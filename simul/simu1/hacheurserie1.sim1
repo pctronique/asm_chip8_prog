@@ -1,0 +1,53 @@
+<circuit version="1.1.0-RC1" rev="2162" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Oscope" CircId="Oscope-9" mainComp="false" Show_id="false" Show_Val="false" Pos="116,-244" rotation="0" hflip="1" vflip="1" label="Oscope-9" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _Pixels" Basic_Y="135 _Pixels" BufferSize="600000 Samples" InputAdmit="0.1 µ℧" TimDiv="519081348" TimPos="-29261040726,-29261040726,-29261040726,-29261040726," VolDiv="0.281509,0.281509,0.281509,0.281509," Tunnels=",,,," Trigger="4" Filter="0.1 V" Trigger="4" AutoSC="4" Tracks="2" HideCh="false,false,false,false," VolPos="-1.34951,-1.34951,-1.34951,-1.34951," />
+
+<item itemtype="Mosfet" CircId="Mosfet-4" mainComp="false" Show_id="false" Show_Val="false" Pos="-216,-180" rotation="-90" hflip="1" vflip="1" label="Mosfet-4" idLabPos="18,0" labelrot="0" valLabPos="-16,20" valLabRot="0" P_Channel="false" Depletion="false" RDSon="1 Ω" Threshold="3 V" />
+
+<item itemtype="Diode" CircId="Diode-3" mainComp="false" Show_id="false" Show_Val="false" Pos="-148,-152" rotation="-90" hflip="1" vflip="1" label="Diode-3" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Model="Diode Default" Threshold="0.634767 V" MaxCurrent="1 A" Resistance="0.05 Ω" BrkDownV="0 V" SatCurrent="171.435 nA" EmCoef="2" />
+
+<item itemtype="Ground" CircId="Ground-7" mainComp="false" Show_id="false" Show_Val="false" Pos="-116,-88" rotation="0" hflip="1" vflip="1" label="Ground-7" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Inductor" CircId="Inductor-2" mainComp="false" ShowProp="Inductance" Show_id="false" Show_Val="true" Pos="-112,-188" rotation="0" hflip="1" vflip="1" label="Inductor-2" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Inductance="2 kH" Resistance="15 Ω" InitVolt="0 A" ReaStep="0 ns" />
+
+<item itemtype="Clock" CircId="Clock-5" mainComp="false" Show_id="false" Show_Val="false" Pos="-252,-136" rotation="0" hflip="1" vflip="1" label="Clock-5" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Out="true" Running="true" Voltage="5 V" Freq="0.5 kHz" Always_On="false" />
+
+<item itemtype="Resistor" CircId="Resistor-1" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-76,-164" rotation="90" hflip="1" vflip="1" label="Resistor-1" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="100 MΩ" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-13" mainComp="false" Show_id="false" Show_Val="false" Pos="-308,-188" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-13" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Node" CircId="Node-15" mainComp="false" Pos="-168,-188" />
+
+<item itemtype="Node" CircId="Node-31" mainComp="false" Pos="-116,-116" />
+
+<item itemtype="Node" CircId="Node-6" mainComp="false" Pos="-148,-188" />
+
+<item itemtype="Node" CircId="Node-16" mainComp="false" Pos="-76,-188" />
+
+<item itemtype="Connector" uid="Connector-57" startpinid="Node-31-2" endpinid="Ground-7-Gnd" pointList="-116,-116,-116,-104" />
+
+<item itemtype="Connector" uid="Connector-4" startpinid="Diode-3-rPin" endpinid="Node-6-1" pointList="-148,-168,-148,-188" />
+
+<item itemtype="Connector" uid="Connector-25" startpinid="Fixed Voltage-13-outnod" endpinid="Mosfet-4-Dren" pointList="-292,-188,-232,-188" />
+
+<item itemtype="Connector" uid="Connector-56" startpinid="Diode-3-lPin" endpinid="Node-31-0" pointList="-148,-136,-148,-116,-116,-116" />
+
+<item itemtype="Connector" uid="Connector-5" startpinid="Inductor-2-lPin" endpinid="Node-6-0" pointList="-128,-188,-148,-188" />
+
+<item itemtype="Connector" uid="Connector-28" startpinid="Node-6-2" endpinid="Node-15-0" pointList="-148,-188,-168,-188" />
+
+<item itemtype="Connector" uid="Connector-29" startpinid="Node-15-2" endpinid="Mosfet-4-Sour" pointList="-168,-188,-200,-188" />
+
+<item itemtype="Connector" uid="Connector-31" startpinid="Oscope-9-Pin1" endpinid="Node-16-1" pointList="28,-260,-76,-260,-76,-188" />
+
+<item itemtype="Connector" uid="Connector-27" startpinid="Oscope-9-Pin0" endpinid="Node-15-1" pointList="28,-292,-168,-292,-168,-188" />
+
+<item itemtype="Connector" uid="Connector-55" startpinid="Resistor-1-rPin" endpinid="Node-31-1" pointList="-76,-148,-76,-116,-116,-116" />
+
+<item itemtype="Connector" uid="Connector-32" startpinid="Inductor-2-rPin" endpinid="Node-16-0" pointList="-96,-188,-76,-188" />
+
+<item itemtype="Connector" uid="Connector-33" startpinid="Node-16-2" endpinid="Resistor-1-lPin" pointList="-76,-188,-76,-180" />
+
+<item itemtype="Connector" uid="Connector-21" startpinid="Mosfet-4-Gate" endpinid="Clock-5-outnod" pointList="-216,-164,-216,-136,-236,-136" />
+
+</circuit>
