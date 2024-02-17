@@ -1,0 +1,14 @@
+Rapport ERC (sam. 17 févr. 2024 14:28:04, Encodage UTF8)
+
+***** Feuille /
+[missing_unit]: Le symbole RV1 a des unités non placées [ Unité B ]
+    ; Severity: warning
+    @(85,0900 mm, 71,1200 mm): Symbole RV1 [R_Potentiometer_Dual_Separate]
+[power_pin_not_driven]: Pin entrée de puissance connectée à d'autres pins, mais aucune pin en sortie de puissance pour la piloter
+    ; Severity: error
+    @(97,7900 mm, 81,2800 mm): Symbol U1 Pin 3 [V-, Power input, Ligne]
+[power_pin_not_driven]: Pin entrée de puissance connectée à d'autres pins, mais aucune pin en sortie de puissance pour la piloter
+    ; Severity: error
+    @(97,7900 mm, 66,0400 mm): Symbol U1 Pin 5 [V+, Power input, Ligne]
+
+** messages ERC: 3  Erreurs 2  Avertissements 1
