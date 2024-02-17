@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="E">
   <design>
-    <source>/opt/pctronique/dev/git_logisim/asm_chip8_prog/kicadtest/test022/test022.kicad_sch</source>
-    <date>sam. 17 févr. 2024 17:16:54</date>
+    <source>/opt/pctronique/dev/git_logisim/asm_chip8_prog/kicadtest/test23/test23.kicad_sch</source>
+    <date>sam. 17 févr. 2024 19:02:08</date>
     <tool>Eeschema 7.0.7+dfsg-1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -10,7 +10,7 @@
         <company/>
         <rev/>
         <date/>
-        <source>test022.kicad_sch</source>
+        <source>test23.kicad_sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
         <comment number="3" value=""/>
@@ -25,94 +25,73 @@
   </design>
   <components>
     <comp ref="BT1">
-      <value>+5V</value>
+      <value>5V</value>
       <footprint>Battery:BatteryHolder_Keystone_103_1x20mm</footprint>
       <libsource lib="Device" part="Battery_Cell" description="Single-cell battery"/>
       <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="test022.kicad_sch"/>
+      <property name="Sheetfile" value="test23.kicad_sch"/>
       <property name="ki_description" value="Single-cell battery"/>
       <property name="ki_keywords" value="battery cell"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>8886c956-2961-46f7-b480-678ec6779edb</tstamps>
+      <tstamps>6a8a1194-c36d-4efb-a38c-8e415d0cf838</tstamps>
     </comp>
     <comp ref="J1">
       <value>~</value>
       <footprint>TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm</footprint>
       <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="test022.kicad_sch"/>
+      <property name="Sheetfile" value="test23.kicad_sch"/>
       <property name="ki_description" value="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="ki_keywords" value="screw terminal"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>82ee146f-f4a3-4583-9611-9f78f545c914</tstamps>
+      <tstamps>c87b3456-63fe-449c-84c8-3f6524c4b7e2</tstamps>
     </comp>
     <comp ref="R1">
       <value>100k</value>
-      <footprint>Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal</footprint>
+      <footprint>Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal</footprint>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="test022.kicad_sch"/>
+      <property name="Sheetfile" value="test23.kicad_sch"/>
       <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>96850df9-4ab0-4d01-98bf-0be1a079bb6e</tstamps>
+      <tstamps>4c2cd79f-afd8-45fa-9762-e9df7f488701</tstamps>
     </comp>
     <comp ref="R2">
       <value>100k</value>
-      <footprint>Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal</footprint>
+      <footprint>Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal</footprint>
       <libsource lib="Device" part="R" description="Resistor"/>
       <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="test022.kicad_sch"/>
+      <property name="Sheetfile" value="test23.kicad_sch"/>
       <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>80ae571f-a695-4d72-a002-d79e995bdca5</tstamps>
+      <tstamps>a945d2b3-4d1b-4143-9411-1c4ba914fd73</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>100k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="test23.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8576711b-3d60-4b0d-9c82-8afc42c376fe</tstamps>
     </comp>
     <comp ref="RV1">
       <value>100k</value>
-      <footprint>Potentiometer_THT:Potentiometer_Alpha_RD902F-40-00D_Dual_Vertical</footprint>
-      <libsource lib="Device" part="R_Potentiometer_Dual_Separate" description="Dual potentiometer, separate units"/>
+      <footprint>Potentiometer_THT:Potentiometer_Vishay_148E-149E_Single_Horizontal</footprint>
+      <libsource lib="Device" part="R_Potentiometer" description="Potentiometer"/>
       <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="test022.kicad_sch"/>
-      <property name="ki_description" value="Dual potentiometer, separate units"/>
+      <property name="Sheetfile" value="test23.kicad_sch"/>
+      <property name="ki_description" value="Potentiometer"/>
       <property name="ki_keywords" value="resistor variable"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>577d4d35-3b65-411a-835f-2f21c3005403</tstamps>
-    </comp>
-    <comp ref="U1">
-      <value>~</value>
-      <footprint>Package_TO_SOT_THT:TO-220-5_P3.4x3.7mm_StaggerOdd_Lead3.8mm_Vertical</footprint>
-      <datasheet>http://www.ti.com/lit/ds/symlink/lm1875.pdf</datasheet>
-      <libsource lib="Amplifier_Audio" part="LM1875" description="20W Audio Power Amplifier, TO-220-5"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="test022.kicad_sch"/>
-      <property name="ki_description" value="20W Audio Power Amplifier, TO-220-5"/>
-      <property name="ki_keywords" value="audio amplifier"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>ffd96fa0-827e-4dbd-810f-d93e3211ff76</tstamps>
+      <tstamps>823d13d5-65c7-47e7-846f-01bea4ffebb5</tstamps>
     </comp>
   </components>
   <libparts>
-    <libpart lib="Amplifier_Audio" part="LM1875">
-      <description>20W Audio Power Amplifier, TO-220-5</description>
-      <docs>http://www.ti.com/lit/ds/symlink/lm1875.pdf</docs>
-      <footprints>
-        <fp>TO?220*StaggerOdd*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">LM1875</field>
-        <field name="Footprint">Package_TO_SOT_THT:TO-220-5_P3.4x3.7mm_StaggerOdd_Lead3.8mm_Vertical</field>
-        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/lm1875.pdf</field>
-      </fields>
-      <pins>
-        <pin num="1" name="+" type="input"/>
-        <pin num="2" name="-" type="input"/>
-        <pin num="3" name="V-" type="power_in"/>
-        <pin num="4" name="" type="output"/>
-        <pin num="5" name="V+" type="power_in"/>
-      </pins>
-    </libpart>
     <libpart lib="Connector" part="Screw_Terminal_01x02">
       <description>Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
       <docs>~</docs>
@@ -158,31 +137,25 @@
         <pin num="2" name="" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Device" part="R_Potentiometer_Dual_Separate">
-      <description>Dual potentiometer, separate units</description>
+    <libpart lib="Device" part="R_Potentiometer">
+      <description>Potentiometer</description>
       <docs>~</docs>
       <footprints>
         <fp>Potentiometer*</fp>
       </footprints>
       <fields>
         <field name="Reference">RV</field>
-        <field name="Value">R_Potentiometer_Dual_Separate</field>
+        <field name="Value">R_Potentiometer</field>
         <field name="Datasheet">~</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
         <pin num="2" name="2" type="passive"/>
         <pin num="3" name="3" type="passive"/>
-        <pin num="4" name="4" type="passive"/>
-        <pin num="5" name="5" type="passive"/>
-        <pin num="6" name="6" type="passive"/>
       </pins>
     </libpart>
   </libparts>
   <libraries>
-    <library logical="Amplifier_Audio">
-      <uri>/usr/share/kicad/symbols//Amplifier_Audio.kicad_sym</uri>
-    </library>
     <library logical="Connector">
       <uri>/usr/share/kicad/symbols//Connector.kicad_sym</uri>
     </library>
@@ -191,31 +164,26 @@
     </library>
   </libraries>
   <nets>
-    <net code="1" name="GND">
-      <node ref="BT1" pin="2" pinfunction="-" pintype="passive"/>
-      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
-      <node ref="R2" pin="2" pintype="passive"/>
-      <node ref="RV1" pin="3" pinfunction="3" pintype="passive"/>
-      <node ref="U1" pin="3" pinfunction="V-" pintype="power_in"/>
+    <net code="1" name="V1">
+      <node ref="BT1" pin="1" pinfunction="+" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="RV1" pin="1" pinfunction="1" pintype="passive"/>
     </net>
     <net code="2" name="V2">
       <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="U1" pin="4" pintype="output"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="RV1" pin="2" pinfunction="2" pintype="passive"/>
     </net>
     <net code="3" name="V3">
       <node ref="R1" pin="2" pintype="passive"/>
       <node ref="R2" pin="1" pintype="passive"/>
-      <node ref="U1" pin="2" pinfunction="-" pintype="input"/>
     </net>
-    <net code="4" name="V4">
-      <node ref="RV1" pin="2" pinfunction="2" pintype="passive"/>
-      <node ref="U1" pin="1" pinfunction="+" pintype="input"/>
-    </net>
-    <net code="5" name="v1">
-      <node ref="BT1" pin="1" pinfunction="+" pintype="passive"/>
-      <node ref="R1" pin="1" pintype="passive"/>
-      <node ref="RV1" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U1" pin="5" pinfunction="V+" pintype="power_in"/>
+    <net code="4" name="VGND">
+      <node ref="BT1" pin="2" pinfunction="-" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="RV1" pin="3" pinfunction="3" pintype="passive"/>
     </net>
   </nets>
 </export>
