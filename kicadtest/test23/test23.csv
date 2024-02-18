@@ -1,5 +1,5 @@
 "#","Reference","Qty","Value","Footprint","DNP"
-"1","BT1","1","5V","Battery:BatteryHolder_Keystone_103_1x20mm",""
+"1","BT1","1","5","Battery:BatteryHolder_Keystone_103_1x20mm",""
 "2","J1","1","~","TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm",""
 "3","R1, R2, R3","3","100k","Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal",""
 "4","RV1","1","100k","Potentiometer_THT:Potentiometer_Vishay_148E-149E_Single_Horizontal",""

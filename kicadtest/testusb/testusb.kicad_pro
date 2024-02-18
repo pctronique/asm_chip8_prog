@@ -48,13 +48,7 @@
           "min_clearance": 0.5
         }
       },
-      "diff_pair_dimensions": [
-        {
-          "gap": 0.0,
-          "via_gap": 0.0,
-          "width": 0.0
-        }
-      ],
+      "diff_pair_dimensions": [],
       "drc_exclusions": [],
       "meta": {
         "version": 2
@@ -171,16 +165,8 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [
-        0.0,
-        1.25
-      ],
-      "via_dimensions": [
-        {
-          "diameter": 0.0,
-          "drill": 0.0
-        }
-      ],
+      "track_widths": [],
+      "via_dimensions": [],
       "zones_allow_external_fillets": false
     },
     "layer_presets": [],
@@ -406,7 +392,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "test23.kicad_pro",
+    "filename": "testusb.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -441,7 +427,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "specctra_dsn": "test23.dsn",
+      "specctra_dsn": "",
       "step": "",
       "vrml": ""
     },
@@ -471,14 +457,6 @@
       "version": 1
     },
     "net_format_name": "",
-    "ngspice": {
-      "fix_include_paths": true,
-      "meta": {
-        "version": 0
-      },
-      "model_mode": 1,
-      "workbook_filename": "test23.wbk"
-    },
     "page_layout_descr_file": "",
     "plot_directory": "",
     "spice_current_sheet_as_root": false,
@@ -491,7 +469,7 @@
   },
   "sheets": [
     [
-      "0dea7148-329b-40bf-b042-de19a4ef0475",
+      "83f84684-a8f7-4520-94ea-8414fcee7165",
       ""
     ]
   ],

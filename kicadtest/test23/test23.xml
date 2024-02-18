@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/opt/pctronique/dev/git_logisim/asm_chip8_prog/kicadtest/test23/test23.kicad_sch</source>
-    <date>sam. 17 févr. 2024 19:02:08</date>
+    <date>dim. 18 févr. 2024 09:48:55</date>
     <tool>Eeschema 7.0.7+dfsg-1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -25,9 +25,19 @@
   </design>
   <components>
     <comp ref="BT1">
-      <value>5V</value>
+      <value>5</value>
       <footprint>Battery:BatteryHolder_Keystone_103_1x20mm</footprint>
+      <fields>
+        <field name="Sim.Device">V</field>
+        <field name="Sim.Params">v=5</field>
+        <field name="Sim.Pins">1=+ 2=-</field>
+        <field name="Sim.Type">=</field>
+      </fields>
       <libsource lib="Device" part="Battery_Cell" description="Single-cell battery"/>
+      <property name="Sim.Device" value="V"/>
+      <property name="Sim.Type" value="="/>
+      <property name="Sim.Pins" value="1=+ 2=-"/>
+      <property name="Sim.Params" value="v=5"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="test23.kicad_sch"/>
       <property name="ki_description" value="Single-cell battery"/>
@@ -38,7 +48,11 @@
     <comp ref="J1">
       <value>~</value>
       <footprint>TerminalBlock:TerminalBlock_Altech_AK300-2_P5.00mm</footprint>
+      <fields>
+        <field name="Sim.Enable">0</field>
+      </fields>
       <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sim.Enable" value="0"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="test23.kicad_sch"/>
       <property name="ki_description" value="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
@@ -82,7 +96,17 @@
     <comp ref="RV1">
       <value>100k</value>
       <footprint>Potentiometer_THT:Potentiometer_Vishay_148E-149E_Single_Horizontal</footprint>
+      <fields>
+        <field name="Sim.Device">R</field>
+        <field name="Sim.Params">r=''</field>
+        <field name="Sim.Pins">1=r0 2=wiper 3=r1</field>
+        <field name="Sim.Type">POT</field>
+      </fields>
       <libsource lib="Device" part="R_Potentiometer" description="Potentiometer"/>
+      <property name="Sim.Device" value="R"/>
+      <property name="Sim.Type" value="POT"/>
+      <property name="Sim.Pins" value="1=r0 2=wiper 3=r1"/>
+      <property name="Sim.Params" value="r=''"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="test23.kicad_sch"/>
       <property name="ki_description" value="Potentiometer"/>

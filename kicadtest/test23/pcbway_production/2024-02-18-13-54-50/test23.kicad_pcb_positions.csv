@@ -1,0 +1,4 @@
+﻿pos_x,pos_y,rotation,side,designator,mpn,pack,value,mount_type,place
+147.509999,-77.970001,90.0,top,BT1,,BatteryHolder_Keystone_103_1x20mm,5,tht,True
+167.45,-73.61,180.0,top,J1,,TerminalBlock_Altech_AK300-2_P5.00mm,~,tht,True
+164.12,-65.2,90.0,top,RV1,,Potentiometer_Alps_RK09K_Single_Vertical,100k,tht,True

@@ -1,0 +1,8 @@
+Plugin v0.0.1 running on KiCad 7.0.7+dfsg-1 and Python 3.11.6 (main, Oct  8 2023, 05:06:43) [GCC 13.2.0] on linux.
+Config file /opt/pctronique/dev/git_logisim/asm_chip8_prog/kicadtest/test23/test23.kicad_pcb.hierpcb.json not found. Creating new one.
+Imported /opt/pctronique/dev/git_logisim/asm_chip8_prog/kicadtest/test23/test23.kicad_pcb, with 3 footprints, 9 tracks, and 3 drawings.
+ (+ PCB /opt/pctronique/dev/git_logisim/asm_chip8_prog/kicadtest/test23/test23.kicad_pcb)
+PCB /opt/pctronique/dev/git_logisim/asm_chip8_prog/kicadtest/test23/test23.kicad_pcb
+  /6a8a1194: BT1
+  /823d13d5: RV1
+  /c87b3456: J1

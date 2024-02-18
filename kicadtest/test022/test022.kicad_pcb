@@ -644,7 +644,7 @@
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 81ed80e8-5fcf-4820-8098-84b4550a4831))
     (fp_line (start -2.45 3.25) (end 3.5 3.25)
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 2ddf2756-3fd9-411d-ba23-016787f8a289))
-    (fp_arc (start 3.5 3.25) (mid 3.809279 3.345913) (end 4.01 3.6)
+    (fp_arc (start 3.5 3.25) (mid 3.80926 3.345922) (end 4.01 3.6)
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 054658a5-a617-47ae-a453-93c3bc627e38))
     (fp_arc (start 4.01 -3.6) (mid 3.809274 -3.345915) (end 3.5 -3.25)
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp c0262244-da8b-4fc8-be56-6e196b2988f4))
@@ -704,6 +704,9 @@
       (rotate (xyz 0 0 0))
     )
   )
+
+  (gr_rect (start 97.58 69) (end 156.33 98.02)
+    (stroke (width 0.1) (type default)) (fill none) (layer "Edge.Cuts") (tstamp bb80fae4-6b8f-452d-a24e-6d1bbd833ece))
 
   (segment (start 137.62 75.46) (end 144.94 75.46) (width 0.25) (layer "F.Cu") (net 1) (tstamp 049291de-8a73-4b42-9c8e-0a0637474ae0))
   (segment (start 144.94 75.46) (end 148.35 78.87) (width 0.25) (layer "F.Cu") (net 1) (tstamp f3f10662-02d9-466e-9033-42cfff731d13))

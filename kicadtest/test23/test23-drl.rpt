@@ -1,0 +1,26 @@
+Drill report for test23.kicad_pcb
+Created on Sun 18 Feb 2024 13:39:01 CET
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'test23-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  1.000mm  0.0394"  (3 holes)
+    T2  1.320mm  0.0520"  (2 holes)
+    T3  1.400mm  0.0551"  (5 holes)
+    T4  1.500mm  0.0591"  (2 holes)
+    T5  1.800mm  0.0709"  (2 holes)  (with 2 slots)
+
+    Total plated holes count 14
+
+
+Drill file 'test23-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+
+    Total unplated holes count 0
