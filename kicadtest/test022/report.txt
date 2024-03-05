@@ -1,7 +1,0 @@
-Numérotation +5V en BT1.
-Numérotation  en J1.
-Numérotation 100k en R1.
-Numérotation 100k en R2.
-Numérotation 100k (unité A) en RV1A.
-Numérotation  en U1.
-Annotation terminée.
