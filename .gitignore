@@ -1,0 +1,4 @@
+/asm_chip8/*.ch8
+/asm_pctr/*.ch8
+/rom_chip8/*.as8
+/rom_pctr/*.as8
