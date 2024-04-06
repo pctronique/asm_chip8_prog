@@ -1,0 +1,33 @@
+; @author pctronique (progratronic) [NAULOT Ludovic]
+	CLS			; effacer l'ecran
+
+				; --- la valeur a afficher ---
+	LD	R9, #0F		; la valeur en hexadecimal
+	LD	I, CHIFFRES	; emplacement des trois chiffres
+	BCD	R9		; convertie l'hexa en 3 chiffres
+	LD	R3, I		;
+
+				; --- emplacement du texte sur l'ecran ---
+	LD	RE, 1		; position en y de 1 pixel
+	LD	RD, 1		; position en x de 1 pixel
+
+				; --- afficher le premier chiffre ---
+	LD	F, R0		; la valeur a afficher
+	DRW	RE, RD, 5		; Dessiner sur l'ecran le chiffre
+
+				; --- afficher le deuxieme chiffre ---
+	ADD	RE, 5		; position en x de 6 pixels (5+1)
+	LD	F, R1		; la valeur a afficher
+	DRW	RE, RD, 5		; Dessiner sur l'ecran le chiffre
+
+				; --- afficher le troisieme chiffre ---
+	ADD	RE, 5		; position en x de 11 pixels (5+6)
+	LD	F, R2		; la valeur a afficher
+	DRW	RE, RD, 5		; Dessiner sur l'ecran le chiffre
+
+FIN	JP	FIN		; --- la fin du programme ---
+	
+				; --- Donnees ---
+CHIFFRES	DB	#00		; le chiffre des centaines
+	DB	#00		; le chiffre des dizaines
+	DB	#00		; le chiffre des unites
